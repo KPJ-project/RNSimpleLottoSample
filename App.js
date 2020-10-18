@@ -50,7 +50,6 @@ export default function App() {
       style={[
         stylesLottoNumber.lottoNumberDefault,
         getLottoNumberBackGroundColor(index),
-        // stylesLottoNumber.lottoNumberBackgroundColorDefault,
       ]}
     >
       <Text style={stylesLottoNumber.lottoNumText}>{lottoNum}</Text>
@@ -59,7 +58,16 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={stylesLottoNumber.container}>{lottoNumberList}</View>
+      <View
+        style={[
+          stylesLottoNumber.container,
+          Platform.OS === "ios"
+            ? stylesLottoNumber.iosShadow
+            : style.LottoNumber.androidShadow,
+        ]}
+      >
+        {lottoNumberList}
+      </View>
 
       <View style={stylesLottoButton.container}>
         <TouchableOpacity
@@ -95,6 +103,15 @@ const stylesLottoNumber = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  androidShadow: { elevation: 3 },
+  iosShadow: {
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    shadowOffset: {
+      height: 3,
+      width: 3,
+    },
   },
   lottoNumberDefault: {
     width: 50,
