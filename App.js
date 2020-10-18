@@ -26,6 +26,7 @@ export default function App() {
 
   let getLottoNumArray = (lotto_num_array) => {
     for (let step = 0; step < LOTTO_BALL_COUNT; step++) {
+      // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/random
       const lotto_num = Math.floor(Math.random() * (MAX - MIN)) + MIN;
       lotto_num_array.push(lotto_num);
     }
