@@ -52,29 +52,61 @@ export default function App() {
         getLottoNumberBackGroundColor(index),
       ]}
     >
-      <Text style={stylesLottoNumber.lottoNumText}>{lottoNum}</Text>
+      <Text
+        style={[
+          stylesLottoNumber.lottoNumText,
+          Platform.OS === "ios"
+            ? stylesLottoNumber.iosShadow
+            : style.LottoNumber.androidShadow,
+        ]}
+      >
+        {lottoNum}
+      </Text>
     </View>
   ));
+
+  const getShadowStyleByPlatform = (iosStyle, androidStyle) => {
+    return Platform.OS === "ios" ? iosStyle : androidStyle;
+  };
 
   return (
     <View style={styles.container}>
       <View
         style={[
           stylesLottoNumber.container,
-          Platform.OS === "ios"
-            ? stylesLottoNumber.iosShadow
-            : style.LottoNumber.androidShadow,
+          getShadowStyleByPlatform(
+            stylesLottoNumber.iosShadow,
+            stylesLottoNumber.androidShadow
+          ),
         ]}
       >
         {lottoNumberList}
       </View>
 
-      <View style={stylesLottoButton.container}>
+      <View
+        style={[
+          stylesLottoButton.container,
+          getShadowStyleByPlatform(
+            stylesLottoButton.iosShadow,
+            stylesLottoButton.androidShadow
+          ),
+        ]}
+      >
         <TouchableOpacity
           onPress={() => setShow(!show)}
           style={stylesLottoButton.button}
         >
-          <Text style={stylesLottoButton.text}>로또 번호 추출하기</Text>
+          <Text
+            style={[
+              stylesLottoButton.text,
+              getShadowStyleByPlatform(
+                stylesLottoButton.iosShadow,
+                stylesLottoButton.androidShadow
+              ),
+            ]}
+          >
+            로또 번호 추출하기
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -94,6 +126,15 @@ const stylesLottoButton = StyleSheet.create({
     padding: 20,
     borderRadius: 5,
   },
+  androidShadow: { elevation: 3 },
+  iosShadow: {
+    shadowOpacity: 0.6,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 2,
+    },
+  },
 });
 
 const stylesLottoNumber = StyleSheet.create({
@@ -106,11 +147,11 @@ const stylesLottoNumber = StyleSheet.create({
   },
   androidShadow: { elevation: 3 },
   iosShadow: {
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
+    shadowOpacity: 0.6,
+    shadowRadius: 2,
     shadowOffset: {
-      height: 3,
-      width: 3,
+      height: 2,
+      width: 2,
     },
   },
   lottoNumberDefault: {
