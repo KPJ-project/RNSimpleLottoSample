@@ -11,25 +11,29 @@ const MAX_RETRY_COUNT = 5;
 export default function App() {
   const [show, setShow] = useState(false);
 
+  const getShadowStyleByPlatform = (iosStyle, androidStyle) => {
+    return Platform.OS === "ios" ? iosStyle : androidStyle;
+  };
+
   let getLottoNum = () => {
-    let lotto_num_array = [];
+    let lottoNumberArray = [];
 
     for (let retry_count = 0; retry_count < MAX_RETRY_COUNT; retry_count++) {
-      const lotto_num_with_comma = getLottoNumArray(lotto_num_array).join(",");
+      const lottoNumberWithComma = getLottoNumArray(lottoNumberArray).join(",");
 
-      if (!ALREADY_WON_LOTTO_NUMBER.includes(lotto_num_with_comma)) {
-        return lotto_num_with_comma.split(",");
+      if (!ALREADY_WON_LOTTO_NUMBER.includes(lottoNumberWithComma)) {
+        return lottoNumberWithComma.split(",");
       }
     }
   };
 
-  let getLottoNumArray = (lotto_num_array) => {
+  let getLottoNumArray = (lottoNumberArray) => {
     for (let step = 0; step < LOTTO_BALL_COUNT; step++) {
       // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/random
       const lotto_num = Math.floor(Math.random() * (MAX - MIN)) + MIN;
-      lotto_num_array.push(lotto_num);
+      lottoNumberArray.push(lotto_num);
     }
-    return lotto_num_array;
+    return lottoNumberArray;
   };
 
   const getLottoNumberBackGroundColor = (lottoNumberIndex) => {
@@ -55,19 +59,16 @@ export default function App() {
       <Text
         style={[
           stylesLottoNumber.lottoNumText,
-          Platform.OS === "ios"
-            ? stylesLottoNumber.iosShadow
-            : style.LottoNumber.androidShadow,
+          getShadowStyleByPlatform(
+            stylesLottoNumber.iosShadow,
+            stylesLottoNumber.androidShadow
+          ),
         ]}
       >
         {lottoNum}
       </Text>
     </View>
   ));
-
-  const getShadowStyleByPlatform = (iosStyle, androidStyle) => {
-    return Platform.OS === "ios" ? iosStyle : androidStyle;
-  };
 
   return (
     <View style={styles.container}>
