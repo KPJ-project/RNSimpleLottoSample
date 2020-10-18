@@ -1,0 +1,12 @@
+{
+    "advancedNewFile.convenienceOptions": [
+
+        "last",
+        "current",
+        "root"
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+}
