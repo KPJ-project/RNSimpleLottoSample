@@ -2,13 +2,13 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function App() {
-  const ALREADY_WON_LOTTO_NUMBER = ["1,2,3,4,5,6"];
-  const MAX = 42;
-  const MIN = 1;
-  const LOTTO_BALL_COUNT = 6;
-  const MAX_RETRY_COUNT = 5;
+const ALREADY_WON_LOTTO_NUMBER = ["1,2,3,4,5,6"];
+const MAX = 42;
+const MIN = 1;
+const LOTTO_BALL_COUNT = 6;
+const MAX_RETRY_COUNT = 5;
 
+export default function App() {
   const [show, setShow] = useState(false);
 
   let getLottoNum = () => {
