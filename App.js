@@ -18,7 +18,7 @@ export default function App() {
       const lotto_num_with_comma = getLottoNumArray(lotto_num_array).join(",");
 
       if (!ALREADY_WON_LOTTO_NUMBER.includes(lotto_num_with_comma)) {
-        return lotto_num_with_comma;
+        return lotto_num_with_comma.split(",");
       }
     }
   };
@@ -32,16 +32,94 @@ export default function App() {
     return lotto_num_array;
   };
 
+  const getLottoNumberBackGroundColor = (lottoNumberIndex) => {
+    if (lottoNumberIndex == 0) {
+      return stylesLottoNumber.lottoNumberBackGroundColorFirtst;
+    } else if (lottoNumberIndex == 1) {
+      return stylesLottoNumber.lottoNumberBackGroundColorSecond;
+    } else if (lottoNumberIndex == 2) {
+      return stylesLottoNumber.lottoNumberBackGroundColorThird;
+    } else {
+      return stylesLottoNumber.lottoNumberBackgroundColorDefault;
+    }
+  };
+
+  const lottoNumberList = getLottoNum().map((lottoNum, index) => (
+    <View
+      key={index}
+      style={[
+        stylesLottoNumber.lottoNumberDefault,
+        getLottoNumberBackGroundColor(index),
+        // stylesLottoNumber.lottoNumberBackgroundColorDefault,
+      ]}
+    >
+      <Text style={stylesLottoNumber.lottoNumText}>{lottoNum}</Text>
+    </View>
+  ));
+
   return (
     <View style={styles.container}>
-      <Text>{getLottoNum()}</Text>
-      <TouchableOpacity onPress={() => setShow(!show)} style={styles.button}>
-        <Text style={styles.buttonText}>로또 번호 추출하기</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
+      <View style={stylesLottoNumber.container}>{lottoNumberList}</View>
+
+      <View style={stylesLottoButton.container}>
+        <TouchableOpacity
+          onPress={() => setShow(!show)}
+          style={stylesLottoButton.button}
+        >
+          <Text style={stylesLottoButton.text}>로또 번호 추출하기</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
+
+const stylesLottoButton = StyleSheet.create({
+  container: {
+    flex: 0.2,
+  },
+  text: {
+    fontSize: 20,
+    color: "#fff",
+  },
+  button: {
+    backgroundColor: "red",
+    padding: 20,
+    borderRadius: 5,
+  },
+});
+
+const stylesLottoNumber = StyleSheet.create({
+  container: {
+    flex: 0.8,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  lottoNumberDefault: {
+    width: 50,
+    height: 50,
+    borderRadius: 50 / 2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  lottoNumberBackgroundColorDefault: {
+    backgroundColor: "#aaaaaa",
+  },
+  lottoNumberBackGroundColorFirtst: {
+    backgroundColor: "#fac32d",
+  },
+  lottoNumberBackGroundColorSecond: {
+    backgroundColor: "#6dc9f0",
+  },
+  lottoNumberBackGroundColorThird: {
+    backgroundColor: "#fd7375",
+  },
+  lottoNumText: {
+    fontSize: 20,
+    color: "#fff",
+  },
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -49,14 +127,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  },
-  button: {
-    backgroundColor: "red",
-    padding: 20,
-    borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: "#fff",
+    margin: 10,
   },
 });
