@@ -1,3 +1,8 @@
+export const MAX = 46;
+export const MIN = 1;
+export const LOTTO_BALL_COUNT = 6;
+export const MAX_RETRY_COUNT = 5;
+
 export const ALREADY_WON_LOTTO_NUMBER = [
   "23,27,29,31,36,45",
   "1,6,15,36,37,38",

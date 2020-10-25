@@ -1,7 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { ALREADY_WON_LOTTO_NUMBER } from "./constants";
+import {
+  ALREADY_WON_LOTTO_NUMBER,
+  MAX,
+  MIN,
+  LOTTO_BALL_COUNT,
+  MAX_RETRY_COUNT,
+} from "./constants";
 import {
   stylesLottoButton,
   stylesLottoNumber,
@@ -9,11 +15,6 @@ import {
   styles,
 } from "./styles";
 import { getShadowStyleByPlatform } from "./helpers";
-
-const MAX = 46;
-const MIN = 1;
-const LOTTO_BALL_COUNT = 6;
-const MAX_RETRY_COUNT = 5;
 
 export default function App() {
   const [show, setShow] = useState(false);
