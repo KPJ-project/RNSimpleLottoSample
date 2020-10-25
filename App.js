@@ -123,7 +123,7 @@ export default function App() {
               ),
             ]}
           >
-            신의 손 출현!
+            출현!
           </Text>
         </TouchableOpacity>
       </View>
