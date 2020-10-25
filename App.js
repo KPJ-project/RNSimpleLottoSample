@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const ALREADY_WON_LOTTO_NUMBER = ["1,2,3,4,5,6"];
-const MAX = 42;
+const MAX = 46;
 const MIN = 1;
 const LOTTO_BALL_COUNT = 6;
 const MAX_RETRY_COUNT = 5;
@@ -30,10 +30,18 @@ export default function App() {
   let getLottoNumArray = (lottoNumberArray) => {
     for (let step = 0; step < LOTTO_BALL_COUNT; step++) {
       // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-      const lotto_num = Math.floor(Math.random() * (MAX - MIN)) + MIN;
-      lottoNumberArray.push(lotto_num);
+
+      while (true) {
+        const lotto_num = Math.floor(Math.random() * (MAX - MIN)) + MIN;
+        if (lottoNumberArray.includes(lotto_num)) {
+          continue;
+        } else {
+          lottoNumberArray.push(lotto_num);
+          break;
+        }
+      }
     }
-    return lottoNumberArray;
+    return lottoNumberArray.sort((a, b) => a - b);
   };
 
   const getLottoNumberBackGroundColor = (lottoNumberIndex) => {
