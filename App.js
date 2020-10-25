@@ -44,15 +44,17 @@ export default function App() {
     return lottoNumberArray.sort((a, b) => a - b);
   };
 
-  const getLottoNumberBackGroundColor = (lottoNumberIndex) => {
-    if (lottoNumberIndex == 0) {
-      return stylesLottoNumber.lottoNumberBackGroundColorFirtst;
-    } else if (lottoNumberIndex == 1) {
-      return stylesLottoNumber.lottoNumberBackGroundColorSecond;
-    } else if (lottoNumberIndex == 2) {
-      return stylesLottoNumber.lottoNumberBackGroundColorThird;
+  const getLottoNumberBackGroundColor = (lottoNum) => {
+    if (lottoNum >= 1 && lottoNum <= 10) {
+      return stylesLottoNumber.lottoNumberBackGroundColorBetween1To10;
+    } else if (lottoNum >= 11 && lottoNum <= 20) {
+      return stylesLottoNumber.lottoNumberBackGroundColorBetween11To20;
+    } else if (lottoNum >= 21 && lottoNum <= 30) {
+      return stylesLottoNumber.lottoNumberBackGroundColorBetween21To30;
+    } else if (lottoNum >= 31 && lottoNum <= 40) {
+      return stylesLottoNumber.lottoNumberBackgroundColorBetween31To40;
     } else {
-      return stylesLottoNumber.lottoNumberBackgroundColorDefault;
+      return stylesLottoNumber.lottoNumberBackgroundColorBetween41To45;
     }
   };
 
@@ -61,7 +63,7 @@ export default function App() {
       key={index}
       style={[
         stylesLottoNumber.lottoNumberDefault,
-        getLottoNumberBackGroundColor(index),
+        getLottoNumberBackGroundColor(lottoNum),
       ]}
     >
       <Text
@@ -170,17 +172,20 @@ const stylesLottoNumber = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  lottoNumberBackgroundColorDefault: {
-    backgroundColor: "#aaaaaa",
-  },
-  lottoNumberBackGroundColorFirtst: {
+  lottoNumberBackGroundColorBetween1To10: {
     backgroundColor: "#fac32d",
   },
-  lottoNumberBackGroundColorSecond: {
+  lottoNumberBackGroundColorBetween11To20: {
     backgroundColor: "#6dc9f0",
   },
-  lottoNumberBackGroundColorThird: {
+  lottoNumberBackGroundColorBetween21To30: {
     backgroundColor: "#fd7375",
+  },
+  lottoNumberBackgroundColorBetween31To40: {
+    backgroundColor: "#aaaaaa",
+  },
+  lottoNumberBackgroundColorBetween41To45: {
+    backgroundColor: "#b1d64d",
   },
   lottoNumText: {
     fontSize: 20,
