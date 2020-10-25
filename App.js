@@ -83,6 +83,21 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View
+        style={{
+          flex: 0.13,
+          width: "100%",
+          backgroundColor: "#778ca3",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          paddingBottom: 15,
+        }}
+      >
+        <Text style={{ color: "#fff", fontSize: "30", fontWeight: "bold" }}>
+          신의 손
+        </Text>
+        <StatusBar style="auto" />
+      </View>
+      <View
         style={[
           stylesLottoNumber.container,
           getShadowStyleByPlatform(
@@ -133,7 +148,7 @@ const stylesLottoButton = StyleSheet.create({
     color: "#fff",
   },
   button: {
-    backgroundColor: "red",
+    backgroundColor: "#778ca3",
     padding: 20,
     borderRadius: 5,
   },
@@ -155,6 +170,7 @@ const stylesLottoNumber = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    padding: 10,
   },
   androidShadow: { elevation: 3 },
   iosShadow: {
@@ -193,12 +209,21 @@ const stylesLottoNumber = StyleSheet.create({
   },
 });
 
+const stylesStatusBar = StyleSheet.create({
+  container: {
+    flex: 0.15,
+    backgroundColor: "#000",
+    width: "100%",
+    margin: 15,
+  },
+});
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    margin: 10,
+    // margin: 10,
   },
 });
