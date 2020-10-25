@@ -82,19 +82,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          flex: 0.13,
-          width: "100%",
-          backgroundColor: "#778ca3",
-          alignItems: "center",
-          justifyContent: "flex-end",
-          paddingBottom: 15,
-        }}
-      >
-        <Text style={{ color: "#fff", fontSize: "30", fontWeight: "bold" }}>
-          신의 손
-        </Text>
+      <View style={[stylesStatusBar.container]}>
+        <Text style={stylesStatusBar.text}>신의 손</Text>
         <StatusBar style="auto" />
       </View>
       <View
@@ -211,11 +200,14 @@ const stylesLottoNumber = StyleSheet.create({
 
 const stylesStatusBar = StyleSheet.create({
   container: {
-    flex: 0.15,
-    backgroundColor: "#000",
+    flex: 0.13,
     width: "100%",
-    margin: 15,
+    backgroundColor: "#778ca3",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    paddingBottom: 15,
   },
+  text: { color: "#fff", fontSize: 25, fontWeight: "bold" },
 });
 
 const styles = StyleSheet.create({
