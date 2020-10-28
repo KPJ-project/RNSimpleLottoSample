@@ -36,7 +36,7 @@ export default function App() {
       // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
       while (true) {
-        const lotto_num = Math.floor(Math.random() * (MAX - MIN)) + MIN;
+        const lotto_num = Math.floor(Math.random() * (MAX - MIN) + 1) + MIN;
         if (lottoNumberArray.includes(lotto_num)) {
           continue;
         } else {
