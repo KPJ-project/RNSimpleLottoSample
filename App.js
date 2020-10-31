@@ -124,7 +124,7 @@ export default function App() {
               ),
             ]}
           >
-            출현!
+            가즈아~!
           </Text>
         </TouchableOpacity>
       </View>
