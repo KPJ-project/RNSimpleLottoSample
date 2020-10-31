@@ -1,4 +1,4 @@
-export const MAX = 46;
+export const MAX = 45;
 export const MIN = 1;
 export const LOTTO_BALL_COUNT = 6;
 export const MAX_RETRY_COUNT = 5;
